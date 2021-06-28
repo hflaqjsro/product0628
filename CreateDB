@@ -57,7 +57,7 @@ CREATE TABLE COMPANY (
  CREATE TABLE COMMUNITY (
   postNum number,            -- 게시글번호
   postTitle varchar2 (100)   -- 게시글제목
-  postText varchar2 (1000)   -- 게시글내용
+  postText varchar2 (3000)   -- 게시글내용
   postTag varchar2 (50)      -- 게시글태그
 
 );
