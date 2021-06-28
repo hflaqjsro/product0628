@@ -1,7 +1,10 @@
 1. 개인
 CREATE TABLE PERSONAL (
   pName varchar2 (100),        -- 성명
-
+  pID varchar2(15),            -- 아이디 
+  pPW varchar2(20),            -- 비밀번호
+  pMail varchar2(30),          -- 이메일
+  pHP varchar2(15)             -- 연락처
 );
  
 
@@ -59,6 +62,16 @@ CREATE TABLE COMPANY (
   details (500)                --상세소개
 );
 
+3-1. 기업회원
+
+CREATE TABLE COMMEM (
+  cNum                         -- 사업자등록번호
+  cID                          -- 인사담당 ID
+  cPW                          -- 인사담당 PW
+  cMail                        -- 인사담당 이메일
+  cHP                          -- 인사담당 연락처
+);
+
 
 
 4. 채용공고
@@ -100,4 +113,12 @@ CREATE TABLE RECRUIT (
   postText varchar2 (3000)   -- 게시글내용
   postTag varchar2 (50)      -- 게시글태그
 
+);
+
+ 6. 접수
+CREATE TABLE RECEIVED(
+  cName varchar2(100),      -- 기업명
+  rsNum varchar2(8),        --채용공고 코드
+  pName                     --지원자 이름
+  pIDNum                    --이력서 코드
 );
