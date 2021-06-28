@@ -117,7 +117,7 @@ CREATE TABLE RECRUIT (
  6. 접수
 CREATE TABLE RECEIVED(
   cName varchar2(100),      -- 기업명
-  rsNum varchar2(8),        -- 채용공고 코드
+  rNum varchar2(8),        -- 채용공고 코드
   pName varchar2(100),      --지원자 이름
   rsNum varchar2(8)         --이력서 코드
 );
