@@ -11,7 +11,7 @@ CREATE TABLE PERSONAL (
 
 CREATE TABLE RESUME (
   rsNum varchar(8) -- 이력서 고유번호 (pk)
-  pNum varchar(8) -- 회원 고유번호
+  pNum varchar(8) -- 회원 고유번호 ◀ (일반회원DB 조인에 사용)
   pName varchar2(100) -- 이름
   birth date -- 생년월일
   gender number -- 성별 (1남성 2여성)
@@ -46,7 +46,7 @@ CREATE TABLE RECRUIT (
   rsNum varchar(8) -- 채용공고 고유번호 (pk)
   cNum varchar(8) -- 회원 고유번호 ◀ (기업회원DB 조인에 사용)
   cName varchar2(100) -- 이름
-  limit date -- 공고 마감일
+  deadline date -- 공고 마감일
   progress number -- 상태 (ex. 1: 채용 진행중, 2:공고 마감)
   area varchar2(100) -- 근무지역
   career varchar2(100) -- 경력
