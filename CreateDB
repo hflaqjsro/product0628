@@ -44,8 +44,8 @@ CREATE TABLE RESUME (
   
   
   
-3. 기업
-CREATE TABLE COMPANY (
+3. 기업정보
+CREATE TABLE COMPANYINFO (
   cName varchar2 (100),        -- 기업명
   industry varchar2 (200),     -- 산업
   employees number,            -- 사원수
@@ -63,13 +63,14 @@ CREATE TABLE COMPANY (
   details (500)                --상세소개
 );
 
-3-1. 기업회원
+3-1. 기업회원 
 
-CREATE TABLE COMMEM (
-  cNum                         -- 사업자등록번호
-  cID                          -- 인사담당 ID
-  cPW                          -- 인사담당 PW
-  cMail                        -- 인사담당 이메일
+CREATE TABLE COMPANY (
+  cName varchar2 (100),        -- 기업명
+  cNum,                         -- 사업자등록번호
+  cID,                          -- 인사담당 ID
+  cPW,                          -- 인사담당 PW
+  cMail,                        -- 인사담당 이메일
   cHP                          -- 인사담당 연락처
 );
 
@@ -118,7 +119,7 @@ CREATE TABLE RECRUIT (
  6. 접수
 CREATE TABLE RECEIVED(
   cName varchar2(100),      -- 기업명
-  rsNum varchar2(8),        --채용공고 코드
-  pName                     --지원자 이름
-  pIDNum                    --이력서 코드
+  rsNum varchar2(8),        -- 채용공고 코드
+  pName varchar2(100),      --지원자 이름
+  rsNum varchar2(8)         --이력서 코드
 );
