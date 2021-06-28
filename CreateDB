@@ -38,6 +38,7 @@ CREATE TABLE RESUME (
   그 외 생략
 );  
 
+--> 이름, 생년월일, 성별은 수정불가하므로 회원DB조인. 이메일주소와 휴대폰번호는 수정 가능.
 ※ 외부접근: 이력서 목록, 인재 검색(?)
   
   
@@ -83,8 +84,10 @@ CREATE TABLE RECRUIT (
   rcTitle varchar(300) -- 채용공고 제목
   deadline date -- 공고 마감일
   progress number -- 상태 (ex. 1: 채용 진행중, 2:공고 마감)
-  area number --  (법정동코드 ex. 1100000000:서울특별시, 1111000000:서울특별시 종로구, 1111010100:서울특별시 종로구 청운동)
-  career number -- 경력 (ex. 1:"신입", 2:"1~3년")
+  address1 varchar(300) -- 근무지 주소 (다음 주소 api의 roadAddress를 받아옴)
+  address2 varchar(600) -- 근무지 상세주소
+  area number -- 근무지역 (검색에 쓰임. 다음 주소 api의 법정동코드bcode 받아옴.. ex.1111010100:서울특별시 종로구 청운동)
+  career number -- 경력 (ex. 1:"신입", 2:"1~3년" ..)
   education number -- 최종학력 (ex. 1:"초등학교 졸업", 2:"중학교 졸업" ..)
   empType number -- 고용형태 (ex. 1: 정규직, 2: 계약직 ...) 
   occupation number -- 산업 (ex. 100:"서비스업", 200:"금융,은행업"..)
@@ -95,6 +98,7 @@ CREATE TABLE RECRUIT (
   -- gender 보류..
   prefer varchar2(300) -- 우대조건
 
+  그 외 생략
 );
 
 --> 기업명, 기업형태 등은 수정할 수 없는 값이므로 join해서 출력
