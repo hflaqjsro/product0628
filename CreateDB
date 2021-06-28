@@ -1,40 +1,63 @@
 1. 개인
- 이름 (PName)
- 아이디(PId)
- 비밀번호(PPw)
- 이메일(PMail)
- 연락처(PHp)
+CREATE TABLE PERSONAL (
+  pName varchar2 (100),        -- 성명
+
+);
+ 
 
 
 2. 이력서
 (개인의 요소 중 테이블 연결에 쓰일 PK를 제외한 나머지 내용 생략) 
- 고유번호 --
-  
+
+CREATE TABLE PERSONAL (
+  pName varchar2 (100),        -- 성명
+  pIDNum number,               -- 고유번호
+
+);  
   
   
   
 3. 기업
-사업자등록번호(CNum)
-기업명(CName)
-대표자명(CCeo)
-아이디(CId)
-비밀번호(CPw)
-이름(CName)
-연락처(CHp)
-이메일(CMaill)
-주소(CAdd)
-규모(CScale) --대기업/중소기업..
+
+CREATE TABLE COMPANY (
+  cName varchar2 (100),        -- 기업명
+  industry varchar2 (200),     -- 산업
+  employees number,            -- 사원수
+  classification varchar2 (50) -- 구분
+  builDate date,               -- 설립일
+  capital varchar2 (100),      --자본금
+  totSales varchar2 (100),     -- 매출액 
+  CEO varchar2 (30),           -- CEO 성명 
+  sal varchar2 (100),          -- 초임
+  mainRole varchar(100),       -- 주요사업
+  insurance varchar(50),       -- 보험
+  website varchar(150),        -- 홈페이지
+  address varchar(200),        -- 주소
+  credit varchar(20),          -- 신용등급
+  details (500)                --상세소개
+);
+
+
+
 
 4. 채용공고
 (기업정보의 요소 중 테이블 연결에 쓰일 PK를 제외한 나머지 내용 생략) 
 
+CREATE TABLE COMPANY (
+  cName varchar2 (100),        -- 기업명
 
+);
 
 
 
 5. 커뮤니티 
  아이디 () - 개인의 아이디와 연동하여 조인할 예정 또는 개인의 고유번호가 있다면 그것과 연동할 예정입니다.
- 게시글번호 (postNum)
- 게시글제목 (postTitle)
- 게시글내용 (postText)
- 게시글태그 (postTag)
+ 
+ 
+ CREATE TABLE COMMUNITY (
+  postNum number,            -- 게시글번호
+  postTitle varchar2 (100)   -- 게시글제목
+  postText varchar2 (1000)   -- 게시글내용
+  postTag varchar2 (50)      -- 게시글태그
+
+);
