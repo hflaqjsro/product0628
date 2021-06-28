@@ -4,7 +4,9 @@ CREATE TABLE PERSONAL (
   pID varchar2(15),            -- 아이디 
   pPW varchar2(20),            -- 비밀번호
   pMail varchar2(30),          -- 이메일
-  pHP varchar2(15)             -- 연락처
+  pHP varchar2(15),            -- 연락처
+  birth date,                  -- 생년월일
+  gender num                   -- 성별(1:남, 2:여)
 );
  
 
