@@ -6,7 +6,7 @@ CREATE TABLE PERSONAL (
   pMail varchar2(30),          -- 이메일
   pHP varchar2(15),            -- 연락처
   birth date,                  -- 생년월일
-  gender num                   -- 성별(1:남, 2:여)
+  gender number                -- 성별(1:남, 2:여)
 );
  
 
