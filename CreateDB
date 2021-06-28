@@ -17,24 +17,22 @@ CREATE TABLE PERSONAL (
 CREATE TABLE RESUME (
   rsNum varchar(8) -- 이력서 고유번호 (pk)
   pNum varchar(8) -- 회원 고유번호 ◀ (일반회원DB 조인에 사용)
-  pName varchar2(100) -- 이름
-  birth date -- 생년월일
-  gender number -- 성별 (1남성 2여성)
+  rsTitle varchar(300) -- 이력서 
   profileImage varchar2(3000) -- 사진 URL
   email varchar2(100) -- 이메일 주소
   isVerified_email boolean -- 이메일 인증 여부
-  phone varchar2(15) -- 휴대폰 번호
-  isAborad_phone boolean -- 해외거주 여부
-  isVerified_phone boolean -- 휴대폰 인증 여부
+  mobile varchar2(15) -- 휴대폰 번호
+  isAborad_mobile boolean -- 해외거주 여부
+  isVerified_mobile boolean -- 휴대폰 인증 여부
   tel varchar2(15)  -- 전화번호 
   address1 varchar2(300) -- 주소
   address2 varchar2(600) -- 상세주소
   isAbroad_address boolean -- 해외거주 여부
   education number -- 최종학력 (ex. 1:"초등학교 졸업", 2:"중학교 졸업" ..)
-  career number -- 경력 (ex. 1:"신입", 2:"1~3년")
-  salary number -- 연봉 (ex. 1:"회사 내규에 따름", 2:"~2000만원")
-  occupation number -- 희망직종 (ex. 100:"서비스업", 200:"금융,은행업")
-  area number -- 희망지역 (ex. 100:"서울시", 110:"서울시 강남구", 113:"서울시 강남구 청담동")
+  career number -- 경력 (ex. 1:"신입", 2:"1~3년"..)
+  salary number -- 연봉 (ex. 1:"회사 내규에 따름", 2:"~2000만원"..)
+  occupation number -- 희망직종 (ex. 100:"서비스업", 200:"금융,은행업"..)
+  area number -- 희망지역 (법정동코드 ex. 1100000000:서울특별시, 1111000000:서울특별시 종로구, 1111010100:서울특별시 종로구 청운동)
   isVisible_resume boolean -- 이력서 공개 여부
   
   그 외 생략
@@ -80,16 +78,16 @@ CREATE TABLE COMPANY (
 (기업정보의 요소 중 테이블 연결에 쓰일 PK를 제외한 나머지 내용 생략) 
 
 CREATE TABLE RECRUIT (
-  rsNum varchar(8) -- 채용공고 고유번호 (pk)
+  rcNum varchar(8) -- 채용공고 고유번호 (pk)
   cNum varchar(8) -- 회원 고유번호 ◀ (기업회원DB 조인에 사용)
-  cName varchar2(100) -- 기업명
+  rcTitle varchar(300) -- 채용공고 제목
   deadline date -- 공고 마감일
   progress number -- 상태 (ex. 1: 채용 진행중, 2:공고 마감)
-  area number -- 지역 (ex. 100:"서울시", 110:"서울시 강남구", 113:"서울시 강남구 청담동")
+  area number --  (법정동코드 ex. 1100000000:서울특별시, 1111000000:서울특별시 종로구, 1111010100:서울특별시 종로구 청운동)
   career number -- 경력 (ex. 1:"신입", 2:"1~3년")
   education number -- 최종학력 (ex. 1:"초등학교 졸업", 2:"중학교 졸업" ..)
   empType number -- 고용형태 (ex. 1: 정규직, 2: 계약직 ...) 
-  occupation number -- 산업 (ex. 100:"서비스업", 200:"금융,은행업")
+  occupation number -- 산업 (ex. 100:"서비스업", 200:"금융,은행업"..)
   title number --직급 (ex. 1:사원급, 2: 주임~대리급)
   position number --직책 (ex. 1:팀장/매니저/실장, 2:파트장/그룹장..)
   dept varchar2(100) --직무
