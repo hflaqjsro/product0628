@@ -41,6 +41,28 @@ CREATE TABLE RESUME (
   
   
 3. 기업
+CREATE TABLE COMPANY (
+  cName varchar2 (100),        -- 기업명
+  industry varchar2 (200),     -- 산업
+  employees number,            -- 사원수
+  classification varchar2 (50) -- 구분
+  builDate date,               -- 설립일
+  capital varchar2 (100),      --자본금
+  totSales varchar2 (100),     -- 매출액 
+  CEO varchar2 (30),           -- CEO 성명 
+  sal varchar2 (100),          -- 초임
+  mainRole varchar(100),       -- 주요사업
+  insurance varchar(50),       -- 보험
+  website varchar(150),        -- 홈페이지
+  address varchar(200),        -- 주소
+  credit varchar(20),          -- 신용등급
+  details (500)                --상세소개
+);
+
+
+
+4. 채용공고
+(기업정보의 요소 중 테이블 연결에 쓰일 PK를 제외한 나머지 내용 생략) 
 
 CREATE TABLE RECRUIT (
   rsNum varchar(8) -- 채용공고 고유번호 (pk)
@@ -56,28 +78,15 @@ CREATE TABLE RECRUIT (
   title varchar2(100) --직급
   position varchar2(100) --직책
   dept varchar2(100) --직무
-  -- age 
-  -- gender
+  -- age 보류..
+  -- gender 보류..
   prefer varchar2(300) -- 우대조건
-  
-  그 외 생략
+
 );
 
-기업명, 기업형태 등은 수정할 수 없는 값이므로 join해서 출력
+--> 기업명, 기업형태 등은 수정할 수 없는 값이므로 join해서 출력
 ※ 외부접근: 채용상세, 직무&지역찾기, 상세검색, 기업정보
 ※※ 직무, 산업, 지역, 경력, 고용형태, 연봉: number로 할지..? 고민됩니다..
-
-
-
-
-
-4. 채용공고
-(기업정보의 요소 중 테이블 연결에 쓰일 PK를 제외한 나머지 내용 생략) 
-
-CREATE TABLE COMPANY (
-  cName varchar2 (100),        -- 기업명
-
-);
 
 
 
