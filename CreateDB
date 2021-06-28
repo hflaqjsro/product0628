@@ -17,7 +17,7 @@ CREATE TABLE PERSONAL (
 CREATE TABLE RESUME (
   rsNum varchar(8) -- 이력서 고유번호 (pk)
   pNum varchar(8) -- 회원 고유번호 ◀ (일반회원DB 조인에 사용)
-  rsTitle varchar(300) -- 이력서 
+  rsTitle varchar(300) -- 이력서 제목
   profileImage varchar2(3000) -- 사진 URL
   email varchar2(100) -- 이메일 주소
   isVerified_email boolean -- 이메일 인증 여부
@@ -25,8 +25,8 @@ CREATE TABLE RESUME (
   isAborad_mobile boolean -- 해외거주 여부
   isVerified_mobile boolean -- 휴대폰 인증 여부
   tel varchar2(15)  -- 전화번호 
-  address1 varchar2(300) -- 주소
-  address2 varchar2(600) -- 상세주소
+  address1 varchar2(300) -- 회원의 주소 (Daum 주소 api의 roadAddress 받아옴)
+  address2 varchar2(600) -- 회원의 상세주소
   isAbroad_address boolean -- 해외거주 여부
   education number -- 최종학력 (ex. 1:"초등학교 졸업", 2:"중학교 졸업" ..)
   career number -- 경력 (ex. 1:"신입", 2:"1~3년"..)
@@ -37,6 +37,7 @@ CREATE TABLE RESUME (
   
   그 외 생략
 );  
+ 
 
 --> 이름, 생년월일, 성별은 수정불가하므로 회원DB조인. 이메일주소와 휴대폰번호는 수정 가능.
 ※ 외부접근: 이력서 목록, 인재 검색(?)
