@@ -43,6 +43,7 @@ CREATE TABLE RESUME (
 3. 기업정보
 CREATE TABLE COMPANYINFO (
   cName varchar2 (100),        -- 기업명
+  cNum varchar(8)              -- 회원 고유번호(
   industry varchar2 (200),     -- 산업
   employees number,            -- 사원수
   classification varchar2 (50) -- 구분
