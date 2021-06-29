@@ -104,10 +104,9 @@ CREATE TABLE RECRUIT (
 
 
 5. 커뮤니티 
- 아이디 () - 개인의 아이디와 연동하여 조인할 예정 또는 개인의 고유번호가 있다면 그것과 연동할 예정입니다.
- 
  
  CREATE TABLE COMMUNITY (
+  pID varchar2(15),          -- 개인아이디
   postNum number,            -- 게시글번호
   postTitle varchar2 (100)   -- 게시글제목
   postText varchar2 (3000)   -- 게시글내용
