@@ -42,7 +42,7 @@ CREATE TABLE RESUME (
 CREATE TABLE COMPANYINFO (
   cName varchar2 (100) CONSTRAINT COMPANYINFO_cName_nn NOT NULL,        -- 기업명
   cNum varchar2 (8)  PRIMARY KEY,            -- 회원 고유번호(기업회원)
-  industry varchar2 (200) CONSTRAINT COMPANYINFO_industry_nn NOT NULL,    -- 산업
+  occupation number CONSTRAINT COMPANYINFO_industry_nn NOT NULL,    -- 산업
   cIDNum varchar2 (50) CONSTRAINT COMPANYINFO_cIDNum_nn NOT NULL, -- 사업자등록번호
   employees number,            -- 사원수
   classification varchar2 (50), -- 구분
