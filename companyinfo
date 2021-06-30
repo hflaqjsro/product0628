@@ -1,0 +1,95 @@
+CREATE TABLE COMPANYINFO (
+  cName varchar2 (100) CONSTRAINT COMPANYINFO_cName_nn NOT NULL,        -- 기업명
+  cNum varchar2 (8)  PRIMARY KEY,            -- 회원 고유번호(기업회원)
+  occupation number CONSTRAINT COMPANYINFO_industry_nn NOT NULL,    -- 산업
+  cIDNum number CONSTRAINT COMPANYINFO_cIDNum_nn NOT NULL, -- 사업자등록번호
+  employees number,            -- 사원수
+  classification varchar2 (50), -- 구분
+  builDate date,               -- 설립일
+  capital number,      --자본금
+  totSales number,     -- 매출액 
+  CEO varchar2 (30) CONSTRAINT COMPANYINFO_CEO_nn NOT NULL,           -- CEO 성명 
+  salary number,          -- 초임
+  mainRole varchar2 (100),       -- 주요사업
+  insurance varchar2 (100),       -- 보험
+  website varchar2 (150),        -- 홈페이지
+  address varchar2 (200) CONSTRAINT COMPANYINFO_address_nn NOT NULL,        -- 주소
+  credit varchar2 (20),          -- 신용등급
+  details varchar2 (500)                --상세소개
+);
+
+INSERT INTO COMPANYINFO 
+values(
+'SK하이닉스','cm000001',500,1268103725,28941,
+'대기업','1949-10-15',36576,305000,'이석희',6,
+'반도체,컴퓨터,통신기기 제조,도매','국민연금, 건강보험, 고용보험, 산재보험',
+'www.skhynix.com','경기도 이천시','최상위','꾸준한 연구개발 투자를 합니다.'
+);
+INSERT INTO COMPANYINFO 
+values(
+'셀트리온','cm000002',800,1338123603,2158,
+'대기업','2002-02-26',1349,10849,'기우성',null,
+'바이오,의학연구','국민연금, 건강보험, 고용보험, 산재보험',
+'www.celltrion.com','인천시 연수구','최상위','대한민국 대표 바이오 기업입니다.'
+);
+
+INSERT INTO COMPANYINFO 
+values(
+'삼성전자','cm000003',300,1248100998,111143,
+'대기업','1969-01-13',8975,1663000,'김기남',4,
+'휴대폰,컴퓨터','국민연금, 건강보험, 고용보험, 산재보험',
+'www.samsung.com','서울시 서초구','최상위','끊임없는 기술개발을 합니다.'
+);
+INSERT INTO COMPANYINFO 
+values(
+'KT','cm000004',300,1028142945,22349,
+'대기업','1981-12-10',15644,178000,'구현모',4,
+'유무선통신사업,인터넷','국민연금, 건강보험, 고용보험, 산재보험',
+'www.kt.com','경기도 성남시','최상위','초고속 인터넷서비스'
+);
+INSERT INTO COMPANYINFO 
+values(
+'LG전자','cm000005',300,1078614075,39611,
+'대기업','1958-10-01',9041,569000,'권봉석',5,
+'TV, 컴퓨터','국민연금, 건강보험, 고용보험, 산재보험',
+'www.lge.co.kr','서울시 영등포구','최상위','전자제품 생산'
+);
+INSERT INTO COMPANYINFO 
+values(
+'CJ제일제당','cm000006',400,1048609535,7721,
+'대기업','2007-09-04',819,59808,'손경식',4,
+'설탕, 소맥분, 조미식품','국민연금, 건강보험, 고용보험, 산재보험',
+'www.cj.co.kr','서울시 중구','최상위','대중의 식탁에 건강을'
+);
+
+INSERT INTO COMPANYINFO 
+values(
+'넷플릭스코리아','cm000007',900,1658700119,92,
+'중소기업','2015-01-01',7,4154,'톰',null,
+'온라인 미디어','국민연금, 건강보험, 고용보험, 산재보험',
+'www.netflix.com','서울시 종로구','우수','스트리밍 서비스'
+);
+
+INSERT INTO COMPANYINFO 
+values(
+'신라스테이','cm000008',100,2018640254,461,
+'대기업','2014-06-10',20,835,'박상오',null,
+'호텔','국민연금, 건강보험, 고용보험, 산재보험',
+'www.shillastay.com','서울시 중구','양호','호텔 서비스입니다.'
+);
+INSERT INTO COMPANYINFO 
+values(
+'국가철도공단','cm000009',700,3058213158,1365,
+'공기업','2004-01-01',null,14853,'김상균',4,
+'철도시설','국민연금, 건강보험, 고용보험, 산재보험',
+'www.kr.or.kr','대전시 동구','최상위','국가철도건설합니다.'
+);
+INSERT INTO COMPANYINFO 
+values(
+'한국투자증권','cm000010',200,1168104504,2809,
+'대기업','1974-09-16',1758,152000,'정일문',5,
+'증권투자신탁','국민연금, 건강보험, 고용보험, 산재보험',
+'www.truefriend.com','서울시 영등포구','최상위','우리나라 최초 투자신탁회사'
+);
+SELECT * FROM companyinfo;
+
