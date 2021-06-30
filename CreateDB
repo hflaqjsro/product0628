@@ -15,23 +15,21 @@ CREATE TABLE PERSONAL (
 (개인의 요소 중 테이블 연결에 쓰일 PK를 제외한 나머지 내용 생략) 
 
 CREATE TABLE RESUME (
-  rsNum varchar(8) -- 이력서 고유번호 (pk)
-  pNum varchar(8) -- 회원 고유번호 ◀ (일반회원DB 조인에 사용)
-  rsTitle varchar(300) -- 이력서 제목
-  profileImage varchar2(3000) -- 사진 URL
-  email varchar2(100) -- 이메일 주소
-  mobile varchar2(15) -- 휴대폰 번호
-  tel varchar2(15)  -- 전화번호 
-  address1 varchar2(300) -- 회원의 주소 (Daum 주소 api의 roadAddress 받아옴)
-  address2 varchar2(600) -- 회원의 상세주소
-  education number -- 최종학력 (ex. 1:"초등학교 졸업", 2:"중학교 졸업" ..)
-  career number -- 경력 (ex. 1:"신입", 2:"1~3년"..)
-  salary number -- 연봉 (ex. 1:"회사 내규에 따름", 2:"~2000만원"..)
-  occupation number -- 희망직종 (ex. 100:"서비스업", 200:"금융,은행업"..)
-  area number(10) -- 희망지역 (법정동코드 ex. 1100000000:서울특별시, 1111000000:서울특별시 종로구, 1111010100:서울특별시 종로구 청운동)
-  isVisible_resume boolean -- 이력서 공개 여부
-  
-  그 외 생략
+  rsNum varchar(8) CONSTRAINT resume_rsNum_nn_pk PRIMARY key, -- 이력서 고유번호 (pk)
+  pNum varchar(8) CONSTRAINT resume_pNum_nn NOT NULL REFERENCES personal(pnum), -- 회원 고유번호 ◀ (일반회원DB 조인에 사용)
+  rsTitle varchar(300) CONSTRAINT resume_rsTitle_nn NOT null, -- 이력서 제목
+  profileImage varchar2(3000), -- 사진 URL
+  email varchar2(100) CONSTRAINT resume_email_nn NOT null, -- 이메일 주소
+  mobile varchar2(15) CONSTRAINT resume_mobile_nn NOT null,-- 휴대폰 번호
+  tel varchar2(15),  -- 전화번호 
+  address1 varchar2(300) CONSTRAINT resume_address1_nn NOT null, -- 회원의 주소 (Daum 주소 api의 roadAddress 받아옴)
+  address2 varchar2(600), -- 회원의 상세주소
+  education NUMBER REFERENCES education(eNum), -- 최종학력 (ex. 1:'초등학교 졸업', 2:'중학교 졸업' ..)
+  career NUMBER REFERENCES career(cnum), -- 경력 (ex. 1:'신입', 2:'1~3년'..)
+  salary NUMBER REFERENCES salary (snum), -- 연봉 (ex. 1:'회사 내규에 따름', 2:'~2000만원'..)
+  occupation NUMBER REFERENCES occupation(onum), -- 희망직종 (ex. 100:'서비스업', 200:'금융,은행업'..)
+  --area number(10) -- 희망지역 (법정동코드 ex. 1100000000:서울특별시, 1111000000:서울특별시 종로구, 1111010100:서울특별시 종로구 청운동)
+  isVisible_resume number(1) -- 이력서 공개 여부 1:TRUE, 0:FALSE 
 );  
  
 
@@ -77,26 +75,23 @@ CREATE TABLE COMPANY (
 (기업정보의 요소 중 테이블 연결에 쓰일 PK를 제외한 나머지 내용 생략) 
 
 CREATE TABLE RECRUIT (
-  rcNum varchar(8) -- 채용공고 고유번호 (pk)
-  cNum varchar(8) -- 회원 고유번호 ◀ (기업회원DB 조인에 사용)
-  rcTitle varchar(300) -- 채용공고 제목
-  deadline date -- 공고 마감일
-  progress number -- 상태 (ex. 1: 채용 진행중, 2:공고 마감)
-  address1 varchar(300) -- 근무지 주소 (다음 주소 api의 roadAddress를 받아옴)
-  address2 varchar(600) -- 근무지 상세주소
-  area varchar(300) -- 근무지역 (검색에서 사용됨. 다음 주소 api의 법정동코드bcode 받아옴.. ex.1111010100:서울특별시 종로구 청운동)
-  career number -- 경력 (ex. 1:"신입", 2:"1~3년" ..)
-  education number -- 최종학력 (ex. 1:"초등학교 졸업", 2:"중학교 졸업" ..)
-  empType number -- 고용형태 (ex. 1: 정규직, 2: 계약직 ...) 
-  occupation number -- 산업 (ex. 100:"서비스업", 200:"금융,은행업"..)
-  title number --직급 (ex. 1:사원급, 2: 주임~대리급)
-  position number --직책 (ex. 1:팀장/매니저/실장, 2:파트장/그룹장..)
-  dept varchar2(100) --직무
-  -- age 보류..
-  -- gender 보류..
+  rcNum varchar(8) PRIMARY KEY , -- 채용공고 고유번호 (pk)
+  cNum varchar(8)  CONSTRAINT recruit_cNum_nn NOT NULL REFERENCES company(cnum) , -- 회원 고유번호 ◀ (기업회원DB 조인에 사용)
+  rcTitle varchar(300)  CONSTRAINT rcTitle_cNum_nn NOT NULL, -- 채용공고 제목
+  deadline DATE  CONSTRAINT recruit_deadline_nn NOT NULL , -- 공고 마감일
+  progress NUMBER  CONSTRAINT recruit_progress_nn NOT NULL, -- 상태 (ex. 1: 채용 진행중, 2:공고 마감)
+  address1 varchar(300), -- 근무지 주소 (다음 주소 api의 roadAddress를 받아옴)
+  address2 varchar(600), -- 근무지 상세주소
+  --area varchar(300) -- 근무지역 (검색에서 사용됨. 다음 주소 api의 법정동코드bcode 받아옴.. ex.1111010100:서울특별시 종로구 청운동)
+  career NUMBER REFERENCES career(cnum), -- 경력 (ex. 1:'신입', 2:'1~3년' ..)
+  education NUMBER REFERENCES education(enum), -- 최종학력 (ex. 1:'초등학교 졸업', 2:'중학교 졸업' ..)
+  empType NUMBER REFERENCES empType(etNum), -- 고용형태 (ex. 1: 정규직, 2: 계약직 ...) 
+  occupation NUMBER REFERENCES occupation(onum), -- 산업 (ex. 100:'서비스업', 200:'금융,은행업'..)
+  title NUMBER REFERENCES jobtitle(jtnum), --직급 (ex. 1:사원급, 2: 주임~대리급)
+  position NUMBER REFERENCES jobposition(jpNum), --직책 (ex. 1:팀장/매니저/실장, 2:파트장/그룹장..)
+  salary NUMBER REFERENCES salary(snum), -- 연봉 (ex. 1:'회사 내규에 따름', 2:'~2000만원'..)
+  dept varchar2(100), --직무
   prefer varchar2(300) -- 우대조건
-
-  그 외 생략
 );
 
 --> 기업명, 기업형태 등은 수정할 수 없는 값이므로 join해서 출력
