@@ -40,22 +40,23 @@ CREATE TABLE RESUME (
   
 3. 기업정보
 CREATE TABLE COMPANYINFO (
-  cName varchar2 (100),        -- 기업명
-  cNum varchar(8)              -- 회원 고유번호(
-  industry varchar2 (200),     -- 산업
+  cName varchar2 (100) CONSTRAINT COMPANYINFO_cName_nn NOT NULL,        -- 기업명
+  cNum varchar2 (8)  PRIMARY KEY,            -- 회원 고유번호(기업회원)
+  industry varchar2 (200) CONSTRAINT COMPANYINFO_industry_nn NOT NULL,    -- 산업
+  cIDNum varchar2 (50) CONSTRAINT COMPANYINFO_cIDNum_nn NOT NULL, -- 사업자등록번호
   employees number,            -- 사원수
-  classification varchar2 (50) -- 구분
+  classification varchar2 (50), -- 구분
   builDate date,               -- 설립일
   capital varchar2 (100),      --자본금
   totSales varchar2 (100),     -- 매출액 
-  CEO varchar2 (30),           -- CEO 성명 
-  sal varchar2 (100),          -- 초임
-  mainRole varchar(100),       -- 주요사업
-  insurance varchar(50),       -- 보험
-  website varchar(150),        -- 홈페이지
-  address varchar(200),        -- 주소
-  credit varchar(20),          -- 신용등급
-  details (500)                --상세소개
+  CEO varchar2 (30) CONSTRAINT COMPANYINFO_CEO_nn NOT NULL,           -- CEO 성명 
+  salary varchar2 (100),          -- 초임
+  mainRole varchar2 (100),       -- 주요사업
+  insurance varchar2 (50),       -- 보험
+  website varchar2 (150),        -- 홈페이지
+  address varchar2 (200) CONSTRAINT COMPANYINFO_address_nn NOT NULL,        -- 주소
+  credit varchar2 (20),          -- 신용등급
+  details varchar2 (500)                --상세소개
 );
 
 3-1. 기업회원 
