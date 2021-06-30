@@ -1,12 +1,12 @@
 1. 개인
 CREATE TABLE PERSONAL (
-  pName varchar2 (100),        -- 성명
-  pID varchar2(15),            -- 아이디 
-  pPW varchar2(20),            -- 비밀번호
-  pMail varchar2(30),          -- 이메일
-  pHP varchar2(15),            -- 연락처
-  birth date,                  -- 생년월일
-  gender number                -- 성별(1:남, 2:여)
+  pName varchar2 (100) not null,        -- 성명
+  pID varchar2(15) primary key,            -- 아이디 (pk)
+  pPW varchar2(20) not null,            -- 비밀번호
+  pMail varchar2(30) not null,          -- 이메일
+  pHP varchar2(15) not null,            -- 연락처
+  birth date not null,                  -- 생년월일
+  gender number check (gender between 1 and 2)          -- 성별(1:남, 2:여)
 );
  
 
