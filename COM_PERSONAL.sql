@@ -9,9 +9,9 @@
 	number check03; /0, 1
  */
 
-DROP TABLE post;
+DROP TABLE COMMUNITY;
 
-CREATE TABLE post (
+CREATE TABLE COMMUNITY (
 	memberId varchar2(30),
 	postNum NUMBER,
 	postTitle varchar2(200) NOT null,
@@ -20,11 +20,11 @@ CREATE TABLE post (
 );
 
 
-INSERT INTO post values('himan', 1, '조언 좀 주세요', '면접이 너무 어려워요...', '#면접준비  #취업준비');
-INSERT INTO post values('himan', 2, '이력서 검토', '서류에서 탈락합니다...', '#서류준비  #취업준비');
-INSERT INTO post values('higirl', 3, '면접 복장준비', '면접복장으로...', '#면접준비  #취업준비');
+INSERT INTO COMMUNITY values('himan', 1, '조언 좀 주세요', '면접이 너무 어려워요...', '#면접준비  #취업준비');
+INSERT INTO COMMUNITY values('himan', 2, '이력서 검토', '서류에서 탈락합니다...', '#서류준비  #취업준비');
+INSERT INTO COMMUNITY values('higirl', 3, '면접 복장준비', '면접복장으로...', '#면접준비  #취업준비');
 
-SELECT * FROM post;
+SELECT * FROM COMMUNITY;
 
 
 -- 게시글 수정시
@@ -35,7 +35,7 @@ CREATE SEQUENCE post_sqe
 	MINVALUE 1
 	MAXVALUE 999999;
 
-MERGE INTO post p
+MERGE INTO COMMUNITY p
 using dual
 on (p.postNum = 1) -- 외부에서 form으로 데이터를 입력한 경우
 when matched then
@@ -46,7 +46,7 @@ when not matched then
 	insert (postNum, postTitle, postText, postTag)
 	values (1, '조언 좀 해주세요', '면접이 너무 어려워요', '#면접준비  #취업준비');
 
-SELECT * FROM post;
+SELECT * FROM COMMUNITY;
 
 
 
