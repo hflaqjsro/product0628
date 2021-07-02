@@ -1,0 +1,19 @@
+CREATE TABLE RECRUIT (
+  rcNum varchar(8) PRIMARY KEY , -- 채용공고 고유번호 (pk)
+  cNum varchar(8)  CONSTRAINT recruit_cNum_nn NOT NULL REFERENCES COMPANYINFO(cnum) , -- 회원 고유번호 ◀ (기업회원DB 조인에 사용)
+  rcTitle varchar(300)  CONSTRAINT rcTitle_cNum_nn NOT NULL, -- 채용공고 제목
+  deadline DATE  CONSTRAINT recruit_deadline_nn NOT NULL , -- 공고 마감일
+  progress NUMBER  CONSTRAINT recruit_progress_nn NOT NULL, -- 상태 (ex. 1: 채용 진행중, 2:공고 마감)
+  address1 varchar(300), -- 근무지 주소 (다음 주소 api의 roadAddress를 받아옴)
+  address2 varchar(600), -- 근무지 상세주소
+  --area varchar(300) -- 근무지역 (검색에서 사용됨. 다음 주소 api의 법정동코드bcode 받아옴.. ex.1111010100:서울특별시 종로구 청운동)
+  career NUMBER REFERENCES career(cnum), -- 경력 (ex. 1:'신입', 2:'1~3년' ..)
+  education NUMBER REFERENCES education(enum), -- 최종학력 (ex. 1:'초등학교 졸업', 2:'중학교 졸업' ..)
+  empType NUMBER REFERENCES empType(etNum), -- 고용형태 (ex. 1: 정규직, 2: 계약직 ...) 
+  occupation NUMBER REFERENCES occupation(onum), -- 산업 (ex. 100:'서비스업', 200:'금융,은행업'..)
+  title NUMBER REFERENCES jobtitle(jtnum), --직급 (ex. 1:사원급, 2: 주임~대리급)
+  position NUMBER REFERENCES jobposition(jpNum), --직책 (ex. 1:팀장/매니저/실장, 2:파트장/그룹장..)
+  salary NUMBER REFERENCES salary(snum), -- 연봉 (ex. 1:'회사 내규에 따름', 2:'~2000만원'..)
+  dept varchar2(100), --직무
+  prefer varchar2(300) -- 우대조건
+);
