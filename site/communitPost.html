@@ -2,7 +2,7 @@
 <html>
     <head lang="ko">
         <meta charset="utf-8">
-        <title>커뮤니티 메인페이지</title>
+        <title>커뮤니티 질문작성</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
         <style>
             * {margin: 0px; padding : 0px; box-sizing: border-box;}
@@ -19,9 +19,23 @@
             header {width : 1519px; height:73px;}
             header .wrap{position: relative;}
             header h1 .main-logo {padding: 20px 25px; color: #2E6FAB;}
-            header h2 {color: #363E56; position: absolute; top : 20px; left: 80px;}
+            header h2 a {color: #363E56; position: absolute; top : 20px; left: 80px;}
             header select {position: absolute; top : 30px; left: 80px;}
-            header button {position: absolute; top : 25px; right: 30px;}
+            header ul {position: absolute; top : 25px; right: 30px;}
+            header ul li {
+                float: left;
+                padding: 0px 10px;
+                position: relative;
+            }
+            header ul li::after {
+                content: "|";
+                position: absolute;
+                top : -2px;
+                right : -3px;
+            }
+            header ul li:last-child::after{
+                content: none;
+            }
             
             nav {width : 1519px; height:50px; background: #2E6FAB; color: #ffffff; font-weight: bold;}
             nav a {color: #ffffff;}
@@ -66,10 +80,12 @@
         <header>
             <div class="wrap">
                 <h1>
-                    <i class="main-logo fab fa-wordpress-simple"></i>
+                    <a href="communityMain.html">
+                        <i class="main-logo fab fa-wordpress-simple"></i>
+                    </a>
                 </h1>
                 <h2>
-                    커뮤니티
+                    <a href="communityMain.html">커뮤니티</a>
                 </h2>
                 <!--
                 <select>
@@ -80,7 +96,10 @@
                     <option>합격</option>
                 </select>
                 -->
-                <button type="button">로그인</button>
+                <ul>
+                    <li><a href="#">로그인</a></li>
+                    <li><a href="#">회원가입</a></li>
+                </ul>
             </div>
         </header>
         <nav>
@@ -95,7 +114,7 @@
                     <li><a href="#">MY활동내역</a></li>
                 </ul>
                 <ul>
-                    <li><a href="#">메인홈으로</a></li>
+                    <li><a href="Main.html">메인홈으로</a></li>
                 </ul>
             </div>
         </nav>
@@ -113,9 +132,9 @@
                 <div class="wrap">
                     <div class="post-wrap">
                         <p>입력하시는 고민은 익명으로 등록되니 걱정하지 마세요! 닉네임이 없는 경우 취준진담이 자동으로 등록해드려요.</p>
-                        <form>
+                        <form class="post-form">
                             <input class="post-title-input" type="text" placeholder="내 취업고민을 써보세요!">
-                            <input class="post-text-input"type="text" placeholder="고민 내용을 자세하게 작성해주시면 전문가의 답변을 받아 보 실수 있어요~">
+                            <input class="post-text-input"type="text" placeholder="고민 내용을 자세하게 작성해주시면 전문가의 답변을 받아 보실수 있어요~">
                             <div class="post-buttons">
                                 <input class="post-cancel" type="button" value="취소">
                                 <input class="post-submit" type="submit" value="고민등록">
@@ -128,6 +147,33 @@
         
     </body>
     <script>
-    
+        var postSubmit = document.querySelector(".post-submit");
+        var postTitle = document.querySelector(".post-title-input");
+        var postText = document.querySelector(".post-text-input");
+        var form =  document.querySelector(".post-form");
+        postSubmit.onclick = function check(){
+            if(postTitle.value==""){
+                alert("제목을 입력해주세요.");
+                postTitle.focus();
+                return false;
+            }else if (postText.value==""){
+                alert("고민내용을 입력해주세요.");
+                postText.focus();
+                return false;
+            }else{
+                alert("제출되었습니다.");
+                form.action="communityMain.html";
+            }  
+        };
+        
+        var postcancel = document.querySelector(".post-cancel");
+        postcancel.onclick = function cancle(){
+            var result= confirm("게시글을 작성을 취소하시겠습니까?");
+            if(result){
+                location.href="communityMain.html";
+            }else{
+                
+            }
+        }
     </script>
 </html>
